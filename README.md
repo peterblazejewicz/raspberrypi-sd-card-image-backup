@@ -26,9 +26,23 @@ Just select downloaded image as source and emtpy SD card as target in Etcher:
 
 ![image](https://cloud.githubusercontent.com/assets/14539/19022368/3f1c04ee-88d7-11e6-9230-ab38b792a8fa.png)
 
-## Backup
+## Make Backup
 
-TBD
+```bash
+sudo dd if=/dev/disk2 | gzip > ~/Desktop/rasbian.img.gz
+```
+
+## Restore from Backup
+
+Using CLI worked perfectly. Using Etcher has been failing to finish correctly (TBI).
+CLI:
+```bash
+gunzip --stdout ~/Desktop/rasbian.img.gz | sudo dd of=/dev/disk2
+dd: /dev/disk2: end of device
+15523841+0 records in
+15523840+0 records out
+7948206080 bytes transferred in 3749.280981 secs (2119928 bytes/sec)
+```
 
 ## Author
 @peterblazejewicz
